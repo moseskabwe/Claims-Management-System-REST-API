@@ -5,7 +5,6 @@ This claims management system is based on the Spring framework. The application 
 ## Tools and Technologies
 * Java 1.8
 * Spring Boot
-* Spring REST
 * Hibernate ORM
 * JDBC
 * MySQL

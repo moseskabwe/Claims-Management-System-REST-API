@@ -25,7 +25,7 @@ public class DeclinedClaimService {
 	}
 	
 	@Transactional
-	public DeclinedClaim getDeclinedClaim(String declinedClaimNumber) {		
+	public DeclinedClaim getDeclinedClaim(int declinedClaimNumber) {		
 		return declinedClaimDAO.getDeclinedClaim(declinedClaimNumber);
 	}
 	

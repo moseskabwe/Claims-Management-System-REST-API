@@ -14,7 +14,6 @@ import com.simplehomeinsurance.claims_management_system.service.UserService;
 @RestController
 @RequestMapping("/api")
 public class UserRestController {	
-	
 	@Autowired
 	private UserService userService;
 	

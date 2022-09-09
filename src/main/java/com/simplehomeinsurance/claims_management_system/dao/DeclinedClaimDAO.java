@@ -27,7 +27,7 @@ public class DeclinedClaimDAO {
 		return theQuery.getResultList();
 	}
 
-	public DeclinedClaim getDeclinedClaim(String declinedClaimNumber) {		
+	public DeclinedClaim getDeclinedClaim(int declinedClaimNumber) {		
 		Session currentSession = entityManager.unwrap(Session.class);		
 		return currentSession.get(DeclinedClaim.class, declinedClaimNumber);
 	}

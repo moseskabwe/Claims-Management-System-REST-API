@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,14 +42,15 @@ public class DeclinedClaimRestController {
 		return claim.getDeclinedClaim();
 	}
 	
+	@PreAuthorize("hasRole('ADJUSTER')")
 	@PostMapping("claims/{claimNumber}/declined-claims")
 	public DeclinedClaim declineClaim(@PathVariable String claimNumber, 
 									  @RequestBody DeclinedClaim declinedClaim) {
 		Claim claim = claimService.getClaim(claimNumber);
 		claim.setDeclinedClaim(declinedClaim);			
 		claim.setStatus("Declined");
-		Date date = new Date();  			
-		declinedClaim.setClaim(claim);			
+		Date date = new Date();
+		declinedClaim.setClaim(claim);
 		declinedClaim.setDeclinedDate(DateUtils.formatDate(date));
 		declinedClaimService.saveDeclinedClaim(declinedClaim);
 		claimService.updateClaim(claim);

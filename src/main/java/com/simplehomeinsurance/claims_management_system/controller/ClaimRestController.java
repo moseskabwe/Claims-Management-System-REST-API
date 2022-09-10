@@ -2,7 +2,10 @@ package com.simplehomeinsurance.claims_management_system.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,27 +39,36 @@ public class ClaimRestController {
 		return claimService.getClaimsList();
 	}
 	
-	@GetMapping("/claims/{claimNumber}")
-	public Claim getClaim(@PathVariable String claimNumber) {
-		return claimService.getClaim(claimNumber);
+	@GetMapping("/claims/{claimNumber}/users/{userId}")
+	public Claim getClaim(@PathVariable String claimNumber,
+						  @PathVariable int userId,
+						  HttpServletRequest request) {	
+		Claim claim = claimService.getClaim(claimNumber);
+		User user = userService.getUser(userId);
+		if (request.isUserInRole("ROLE_ADJUSTER") && 
+				claim.getStatus().equalsIgnoreCase("First Notice")) {
+			claim.setStatus("In Progress");
+			claim.setAdjuster(user);
+			claimService.updateClaim(claim);
+		}
+		return claim;
 	}
 	
-	@PostMapping("/policyholders/{policyholderNumber}/policies/{policyNumber}/user/{userId}/claims")
+	@PreAuthorize("hasRole('CSR')")
+	@PostMapping("/policyholders/{policyholderNumber}/policies/{policyNumber}/claims")
 	public Claim addClaim(@PathVariable String policyholderNumber,
 						  @PathVariable String policyNumber,
-						  @PathVariable int userId,
 						  @RequestBody Claim claim) {
 		PolicyHolder policyHolder = policyHolderService.getPolicyHolder(policyholderNumber);	
 		Policy policy = policyService.getPolicy(policyNumber);	
-		User adjuster = userService.getUser(userId);
 		policyHolder.addClaim(claim);
 		claim.setPolicyHolder(policyHolder);
 		claim.setPolicy(policy);
-		claim.setAdjuster(adjuster);
 		claimService.saveClaim(claim);
 		return claim;
 	}
 	
+	@PreAuthorize("hasRole('ADJUSTER')")
 	@GetMapping("/users/{userId}/claims")
 	public List<Claim> getUserClaims(@PathVariable int userId) {
 		User user = userService.getUser(userId);

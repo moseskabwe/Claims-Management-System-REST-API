@@ -1,11 +1,10 @@
 # Claims Management System REST API
 
-This claims management system is a web application based on the Spring framework. The application is built using Spring Boot and Maven. The application connects to a MySQL database and uses the Hibernate framework to provide object-relational mapping.
+This claims management system is based on the Spring framework. The application is built using Spring Boot and Maven. The application connects to a MySQL database and uses the Hibernate framework to provide object-relational mapping.
 
 ## Tools and Technologies
 * Java 1.8
 * Spring Boot
-* Spring REST
 * Hibernate ORM
 * JDBC
 * MySQL

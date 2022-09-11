@@ -5,6 +5,7 @@ This claims management system is based on the Spring framework. The application 
 ## Tools and Technologies
 * Java 1.8
 * Spring Boot
+* Spring Security
 * Hibernate ORM
 * JDBC
 * MySQL
@@ -35,3 +36,25 @@ Both actors can:
 * search for policyholders
 * view a list of all claims
 * view all claim payments
+
+## Screenshots
+
+### Viewing all claims:
+
+![](images/view-claims.jpg)
+
+### Searching for a policyholder:
+
+![](images/search-policyholders.jpg)
+
+### Creating a new claim:
+
+![](images/create-claim.jpg)
+
+### Declining a claim:
+
+![](images/decline-claim.jpg)
+
+### Finalising a claim:
+
+![](images/finalise-claim.jpg)

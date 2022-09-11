@@ -20,9 +20,7 @@ This claims management system is based on the Spring framework. The application 
 
 ## Background
 
-Simple Home Insurance needs a system to provide a simple way for its employees to manage policyholder claims efficiently. It should allow employees to create, view, decline and finalise claims. In addition, employees should be able record payments for approved claims. This claims management system will attempt to meet these requirements.
-
-![](images/dashboard-adj.jpg)
+Simple Home Insurance needs a system to provide a easy way for its employees to manage policyholder claims efficiently. It should allow employees to create, view, decline and finalise claims. In addition, employees should be able record payments for approved claims. This claims management system will attempt to meet these requirements.
 
 ## Features
 

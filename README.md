@@ -41,20 +41,20 @@ Both actors can:
 
 ### Viewing all claims:
 
-![](images/view-claims.jpg)
+![](images/view-claims.JPG)
 
 ### Searching for a policyholder:
 
-![](images/search-policyholders.jpg)
+![](images/search-policyholders.JPG)
 
 ### Creating a new claim:
 
-![](images/create-claim.jpg)
+![](images/create-claim.JPG)
 
 ### Declining a claim:
 
-![](images/decline-claim.jpg)
+![](images/decline-claim.JPG)
 
 ### Finalising a claim:
 
-![](images/finalise-claim.jpg)
+![](images/finalise-claim.JPG)
